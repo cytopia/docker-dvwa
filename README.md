@@ -13,6 +13,11 @@ cd docker-dvwa
 make init
 ```
 
+Configure environment variables
+```
+cp .env-example .env
+```
+
 
 ## :zap: Start
 ```bash
