@@ -4,7 +4,7 @@
 Docker Compose setup of [DVWA](https://github.com/digininja/DVWA)
 
 
-## Installation
+## :tada: Install
 
 Download repository and fetch git submodules
 ```bash
@@ -14,20 +14,28 @@ make init
 ```
 
 
-## Start
+## :zap: Start
 ```bash
 make start
 ```
 
 
-## Stop
+## :no_entry_sign: Stop
 ```bash
 make stop
 ```
 
 
-## Usage
+## :computer: Usage
 
 * Url: http://localhost:8080
 * User: `admin`
 * Pass: `password`
+
+
+
+## :page_facing_up: License
+
+**[MIT License](LICENSE.md)**
+
+Copyright (c) 2021 **[cytopia](https://github.com/cytopia)**
