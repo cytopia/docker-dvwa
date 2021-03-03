@@ -1,16 +1,14 @@
+ifneq (,)
+.error This Makefile requires GNU Make.
+endif
 
+.PHONY: start stop init
 
-IMAGE = cytopia/dvwa
+start: init
+	docker-compose up -d
 
-build: init
-	docker build -t $(IMAGE) .
-
-run:
-	docker run -it --rm -p 8080:80 $(IMAGE)
-
-enter:
-	docker run -it --rm $(IMAGE) bash
-
+stop:
+	docker-compose stop
 
 init:
 	git submodule update --init --recursive
