@@ -46,7 +46,9 @@ The following env variables are default settings and their values can also be ch
 
 | Variable | Settings |
 |----------|----------|
-| `SECURITY_LEVEL`     | Adjust the difficulty of the challenges |
+| `SECURITY_LEVEL` | Adjust the difficulty of the challenges |
+| `PHPIDS_ENABLED` | Enable PHP Web Application Firewall / Intrusion Detection System (off by default) |
+| `PHPIDS_VERBOSE` | Enabling this will show why the WAF blocked the request on the blocked request. |
 
 **Important:** For the `SECURITY_LEVEL` changes to take effect, you will have to clear your cookies. Alternatively change it in the web interface.
 

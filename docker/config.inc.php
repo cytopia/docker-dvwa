@@ -21,15 +21,4 @@ $_DVWA[ 'db_user' ]     = 'dvwa';
 $_DVWA[ 'db_password' ] = 'p@ssw0rd';
 $_DVWA[ 'db_port'] = '3306';
 
-
-# Default PHPIDS status
-#   PHPIDS status with each session.
-#   The default is 'disabled'. You can set this to be either 'enabled' or 'disabled'.
-$_DVWA[ 'default_phpids_level' ] = 'disabled';
-
-# Verbose PHPIDS messages
-#   Enabling this will show why the WAF blocked the request on the blocked request.
-#   The default is 'disabled'. You can set this to be either 'true' or 'false'.
-$_DVWA[ 'default_phpids_verbose' ] = 'false';
-
 ?>
