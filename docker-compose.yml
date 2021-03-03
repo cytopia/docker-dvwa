@@ -1,24 +1,25 @@
 ---
-version: '2.1'
+version: '2.3'
 
 services:
-  webserver:
-    build: .
+  dvwa_web:
+    build: ./docker/
     restart: unless-stopped
-    volumes:
-      - ./config.inc.php:/var/www/html/config/config.inc.php
     ports:
       - "8080:80"
     networks:
       - app-net
-  mysql:
+    environment:
+      - RECAPTCHA_PRIV_KEY=${RECAPTCHA_PRIV_KEY:-}
+      - RECAPTCHA_PUB_KEY=${RECAPTCHA_PUB_KEY:-}
+      - SECURITY_LEVEL=${SECURITY_LEVEL:-medium}
+  dvwa_db:
     image: mysql:5.6
-    container_name: mysql
     hostname: mysql
     volumes:
-      - mysql_data:/var/lib/mysql
+      - dvwa_db_data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: example
+      MYSQL_ROOT_PASSWORD: rootpass
       MYSQL_DATABASE: dvwa
       MYSQL_USER: dvwa
       MYSQL_PASSWORD: p@ssw0rd
@@ -31,4 +32,4 @@ networks:
     driver: bridge
 
 volumes:
-  mysql_data: {}
+  dvwa_db_data: {}

@@ -43,3 +43,21 @@ $_DVWA[ 'default_phpids_level' ] = 'disabled';
 $_DVWA[ 'default_phpids_verbose' ] = 'false';
 
 ?>
+$_DVWA[ 'recaptcha_public_key' ]  = '';
+$_DVWA[ 'recaptcha_private_key' ] = '';
+$_DVWA[ 'default_security_level' ] = 'medium';
+$_DVWA[ 'recaptcha_public_key' ]  = '';
+$_DVWA[ 'recaptcha_private_key' ] = '';
+$_DVWA[ 'default_security_level' ] = 'medium';
+$_DVWA[ 'recaptcha_public_key' ]  = '';
+$_DVWA[ 'recaptcha_private_key' ] = '';
+$_DVWA[ 'default_security_level' ] = '1';
+$_DVWA[ 'recaptcha_public_key' ]  = '';
+$_DVWA[ 'recaptcha_private_key' ] = '';
+$_DVWA[ 'default_security_level' ] = '1';
+$_DVWA[ 'recaptcha_public_key' ]  = '';
+$_DVWA[ 'recaptcha_private_key' ] = '';
+$_DVWA[ 'default_security_level' ] = 'medium';
+$_DVWA[ 'recaptcha_public_key' ]  = '';
+$_DVWA[ 'recaptcha_private_key' ] = '';
+$_DVWA[ 'default_security_level' ] = 'medium';
