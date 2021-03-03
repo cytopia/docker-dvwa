@@ -1,0 +1,3 @@
+[submodule "DVWA"]
+	path = DVWA
+	url = https://github.com/digininja/DVWA
