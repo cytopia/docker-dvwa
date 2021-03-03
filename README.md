@@ -1,7 +1,9 @@
 # Dockerized [DVWA](https://github.com/digininja/DVWA)
 
 
-Docker Compose setup of [DVWA](https://github.com/digininja/DVWA)
+DVWA has an official Docker image available at [Dockerhub](https://hub.docker.com/r/vulnerables/web-dvwa/), however by the time of writing this image did not receive any updates for 2 years.
+
+If you prefer an up-to-date version, choose this repository, as the image will always be built locally against the latest master branch of the [DVWA](https://github.com/digininja/DVWA) repository.
 
 
 ## :tada: Install
