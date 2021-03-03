@@ -6,18 +6,12 @@ Docker Compose setup of [DVWA](https://github.com/digininja/DVWA)
 
 ## :tada: Install
 
-Download repository and fetch git submodules
+Download repository and copy `.env` file
 ```bash
 git clone https://github.com/cytopia/docker-dvwa
 cd docker-dvwa
-make init
-```
-
-Configure environment variables
-```
 cp .env-example .env
 ```
-
 
 ## :zap: Start
 ```bash

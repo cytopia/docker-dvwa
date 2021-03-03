@@ -1,3 +1,0 @@
-[submodule "docker/DVWA"]
-	path = docker/DVWA
-	url = https://github.com/digininja/DVWA

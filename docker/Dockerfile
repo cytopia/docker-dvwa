@@ -1,3 +1,11 @@
+FROM php:7.2-apache as builder
+
+RUN set -eux \
+	&& apt update \
+	&& apt install -y git \
+	&&  git clone https://github.com/digininja/DVWA /DVWA
+
+
 FROM php:7.2-apache
 
 # Satisfy requirements
@@ -10,7 +18,7 @@ RUN set -eux \
 	&& docker-php-ext-install pdo_mysql
 
 # Copy source
-COPY ./DVWA/ /var/www/html/
+COPY --from=builder /DVWA/ /var/www/html/
 COPY ./config.inc.php /var/www/html/config/config.inc.php
 COPY ./entrypoint.sh/ /entrypoint.sh
 

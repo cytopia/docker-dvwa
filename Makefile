@@ -2,13 +2,10 @@ ifneq (,)
 .error This Makefile requires GNU Make.
 endif
 
-.PHONY: start stop init
+.PHONY: start stop
 
-start: init
+start:
 	docker-compose up -d
 
 stop:
 	docker-compose stop
-
-init:
-	git submodule update --init --recursive
