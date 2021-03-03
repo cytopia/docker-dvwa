@@ -26,6 +26,7 @@ COPY ./entrypoint.sh/ /entrypoint.sh
 RUN set -eux \
 	&& chmod 0777 /var/www/html/config/ \
 	&& chmod 0777 /var/www/html/hackable/uploads/ \
+	&& chmod 0777 /var/www/html/external/phpids/0.6/lib/IDS/tmp/ \
 	&& chmod 0666 /var/www/html/external/phpids/0.6/lib/IDS/tmp/phpids_log.txt
 
 CMD ["/entrypoint.sh"]
