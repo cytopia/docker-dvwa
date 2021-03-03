@@ -40,10 +40,15 @@ This setup allows you to configure a few settings via the `.env` file.
 |----------|----------|
 | `RECAPTCHA_PRIV_KEY` | Required to make the captcha module work. (See `.env-example` for instructions) |
 | `RECAPTCHA_PUB_KEY`  | Required to make the captcha module work. (See `.env-example` for instructions) |
+| `PHP_DISPLAY_ERRORS` | Show PHP errors on the website (if you want a really easy mode) |
+
+The following env variables are default settings and their values can also be changed from within the web interface:
+
+| Variable | Settings |
+|----------|----------|
 | `SECURITY_LEVEL`     | Adjust the difficulty of the challenges |
-| `PHP_DISPLAY_ERRORS` | Show PHP errors on the website (if you want a really easy mode |
 
-
+**Important:** For the `SECURITY_LEVEL` changes to take effect, you will have to clear your cookies. Alternatively change it in the web interface.
 
 
 
