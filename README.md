@@ -32,6 +32,20 @@ make stop
 * Pass: `password`
 
 
+## :wrench: Configuration
+
+This setup allows you to configure a few settings via the `.env` file.
+
+| Variable | Settings |
+|----------|----------|
+| `RECAPTCHA_PRIV_KEY` | Required to make the captcha module work. (See `.env-example` for instructions) |
+| `RECAPTCHA_PUB_KEY`  | Required to make the captcha module work. (See `.env-example` for instructions) |
+| `SECURITY_LEVEL`     | Adjust the difficulty of the challenges |
+| `PHP_DISPLAY_ERRORS` | Show PHP errors on the website (if you want a really easy mode |
+
+
+
+
 
 ## :page_facing_up: License
 
