@@ -42,24 +42,11 @@ make stop
 
 ## :computer: Usage
 
-#### Access the web page
 After running `make start` you can access DVWA in your browser via:
 
 * Url: http://localhost:8000
 * User: `admin`
 * Pass: `password`
-
-#### View log files
-You can view the web server access/error logs via:
-```bash
-make logs
-```
-
-#### Get a shell
-You can also get a shell on the web server container via:
-```bash
-make enter
-```
 
 
 
@@ -112,6 +99,30 @@ The database uses a Docker volume and you can simply remove it via:<br/>
 # the command below will stop all running container,
 # remove their state and delete the MySQL docker volume.
 make reset
+```
+</p>
+</details>
+
+
+
+<details><summary><strong>Q:</strong> How can I view Apache access or error log files?</summary>
+<p><br/>
+Log files are piped to <i>stderr</i> from the Docker container and you can view them via:<br/>
+
+```bash
+make logs
+```
+</p>
+</details>
+
+
+
+<details><summary><strong>Q:</strong> How can I get a shell on the web server container?</summary>
+<p><br/>
+You can enter the running web server container via:<br/>
+
+```bash
+make enter
 ```
 </p>
 </details>
