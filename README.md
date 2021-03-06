@@ -71,6 +71,7 @@ The following env variables are default settings and their values can also be ch
   127.0.0.1  dvwa
   ```
   Then use http://dvwa:8000 in your browser.
+
 * **Q:** How can I reset the database and start fresh?<br/>
   **A:** The database uses a Docker volume and you can simply remove it via:<br/>
   ```bash
