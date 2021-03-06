@@ -155,6 +155,8 @@ make enter
    <li><strong>Server:</strong> <code>dvwa_db</code></li>
    <li><strong>Username:</strong> <code>root</code></li>
    <li><strong>Password:</strong> <code>rootpass</code></li>
+  </ul>
+  <img src="doc/adminer.png" />
 </p>
 </details>
 
