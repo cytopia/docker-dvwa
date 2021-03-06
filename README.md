@@ -6,6 +6,7 @@
 **[Usage](#computer-usage)** |
 **[Configuration](#wrench-configuration)** |
 **[FAQ](#bulb-faq)** |
+**[Sec Tools](#lock-cytopia-sec-tools)** |
 **[License](#page_facing_up-license)**
 
 DVWA has an official Docker image available at [Dockerhub](https://hub.docker.com/r/vulnerables/web-dvwa/), however by the time of writing this image did not receive any updates for 2 years.
@@ -86,6 +87,29 @@ The following env variables are default settings and their values can also be ch
   # remove their state and delete the MySQL docker volume.
   make reset
   ```
+
+
+## :lock: [cytopia](https://github.com/cytopia) sec tools
+
+Below is a list of sec tools and docs I am maintaining, which might come in handy working on DVWA..
+
+| Name                 | Category             | Language   | Description |
+|----------------------|----------------------|------------|-------------|
+| **[offsec]**         | Documentation        | Markdown   | Offsec checklist, tools and examples |
+| **[header-fuzz]**    | Enumeration          | Bash       | Fuzz HTTP headers |
+| **[smtp-user-enum]** | Enumeration          | Python 2+3 | SMTP users enumerator |
+| **[urlbuster]**      | Enumeration          | Python 2+3 | Mutable web directory fuzzer |
+| **[pwncat]**         | Pivoting             | Python 2+3 | Cross-platform netcat on steroids |
+| **[badchars]**       | Reverse Engineering  | Python 2+3 | Badchar generator |
+| **[fuzza]**          | Reverse Engineering  | Python 2+3 | TCP fuzzing tool |
+
+[offsec]: https://github.com/cytopia/offsec
+[header-fuzz]: https://github.com/cytopia/header-fuzz
+[smtp-user-enum]: https://github.com/cytopia/smtp-user-enum
+[urlbuster]: https://github.com/cytopia/urlbuster
+[pwncat]: https://github.com/cytopia/pwncat
+[badchars]: https://github.com/cytopia/badchars
+[fuzza]: https://github.com/cytopia/fuzza
 
 
 ## :page_facing_up: License
