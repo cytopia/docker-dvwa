@@ -69,11 +69,12 @@ The following `.env` file variables are default settings and their values can al
 
 | Variable         | Default  | Settings |
 |------------------|----------|----------|
-| `SECURITY_LEVEL` | `medium` | Adjust the difficulty level for the challenges (`low`, `medium`, `high` or `impossible`) |
-| `PHPIDS_ENABLED` | `0`      | Set to `1` to enable PHP Web Application Firewall / Intrusion Detection System (off by default) |
+| `SECURITY_LEVEL` | `medium` | Adjust the difficulty level for the challenges<sup>[1]</sup><br/> (`low`, `medium`, `high` or `impossible`) |
+| `PHPIDS_ENABLED` | `0`      | Set to `1` to enable PHP WAF/IDS<sup>[2]</sup> (off by default) |
 | `PHPIDS_VERBOSE` | `0`      | Set to `1` to display WAF/IDS reasons for blocked requests |
 
-**Important:** For the `SECURITY_LEVEL` changes to take effect, you will have to clear your cookies. Alternatively change it in the web interface.
+> <sup>[1]</sup> For the `SECURITY_LEVEL` changes to take effect, you will have to clear your cookies. Alternatively change it in the web interface.<br/>
+> <sup>[2]</sup> WAF (Web Application Firewall) / IDS (Intrusion Detection System)
 
 
 
