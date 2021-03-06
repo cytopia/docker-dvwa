@@ -14,6 +14,7 @@ DVWA has an official Docker image available at [Dockerhub](https://hub.docker.co
 If you prefer an always up-to-date version, use the here provided Docker Compose setup. The image will always be built locally against the latest master branch of the [DVWA](https://github.com/digininja/DVWA) repository.
 
 
+
 ## :tada: Install
 
 Download repository and copy `.env` file
@@ -23,16 +24,20 @@ cd docker-dvwa
 cp .env-example .env
 ```
 
+
+
 ## :zap: Start
 ```bash
 make start
 ```
 
 
+
 ## :no_entry_sign: Stop
 ```bash
 make stop
 ```
+
 
 
 ## :computer: Usage
@@ -47,6 +52,7 @@ You can also get a shell on the web server container via:
 ```bash
 make enter
 ```
+
 
 
 ## :wrench: Configuration
@@ -75,30 +81,50 @@ The following `.env` file variables are default settings and their values can al
 
 ## :bulb: FAQ
 
-* **Q:** I want to proxy through [BurpSuite](https://portswigger.net/burp), but it does not work on `localhost` or `127.0.01`.<br/>
-  **A:** Browsers ususally bypass `localhost` or `127.0.01` for proxy traffic. One solution is to add an alternative hostname to `/etc/hosts` and access the application through that.<br/>
-  `/etc/hosts`:
-  ```bash
-  127.0.0.1  dvwa
-  ```
-  Then use http://dvwa:8000 in your browser.
+<details><summary><strong>Q:</strong> I want to proxy through <a href="https://portswigger.net/burp">BurpSuite</a>, but it does not work on <code>localhost</code> or <code>127.0.01</code>.</summary>
+<p><br/>
+Browsers ususally bypass <code>localhost</code> or <code>127.0.01</code> for proxy traffic. One solution is to add an alternative hostname to <code>/etc/hosts</code> and access the application through that.<br/><br/>
+<code>/etc/hosts</code>:
 
-* **Q:** How can I reset the database and start fresh?<br/>
-  **A:** The database uses a Docker volume and you can simply remove it via:<br/>
-  ```bash
-  # the command below will stop all running container,
-  # remove their state and delete the MySQL docker volume.
-  make reset
-  ```
-* **Q:** How do I setup the recaptcha key?<br/>
-  **A:** Go to https://www.google.com/recaptcha/admin and generate your captcha as shown below:<br/>
-  [![](doc/captcha-01-thumb.png)](doc/captcha-01.png)<br/>
-  * Ensure to choose `reCaptcha v2`
-  * Ensure to add *all* domains you plan on using
+```bash
+127.0.0.1  dvwa
+```
 
-  [![](doc/captcha-02-thumb.png)](doc/captcha-02.png)<br/>
-  * Add `SITE KEY` to the `RECAPTCHA_PUB_KEY` variable in your `.env` file
-  * Add `SECRET KEY` to the `RECAPTCHA_PRIV_KEY` variable in your `.env` file
+Then use http://dvwa:8000 in your browser.
+</p>
+</details>
+
+
+
+<details><summary><strong>Q:</strong> How can I reset the database and start fresh?</summary>
+<p><br/>
+The database uses a Docker volume and you can simply remove it via:<br/>
+
+```bash
+# the command below will stop all running container,
+# remove their state and delete the MySQL docker volume.
+make reset
+```
+</p>
+</details>
+
+
+
+<details><summary><strong>Q:</strong> How do I setup the reCAPTCHA key?</summary>
+<p><br/>
+  Go to https://www.google.com/recaptcha/admin and generate your captcha as shown below:<br/>
+  <ul>
+   <li>Ensure to choose <code>reCAPTCHA v2</code></li>
+   <li>Ensure to add <i>all</i> domains you plan on using</li>
+  </ul>
+  <a href="doc/captcha-01.png"><img src="doc/captcha-01-thumb.png" /></a>
+  <ul>
+   <li>Add <code>SITE KEY</code> to the <code>RECAPTCHA_PUB_KEY</code> variable in your <code>.env</code> file</li>
+   <li>Add <code>SECRET KEY</code> to the <code>RECAPTCHA_PRIV_KEY</code> variable in your <code>.env</code> file</li>
+  </ul>
+  <a href="doc/captcha-02.png"><img src="doc/captcha-02-thumb.png" /></a>
+</p>
+</details>
 
 
 
@@ -123,6 +149,7 @@ Below is a list of sec tools and docs I am maintaining, which might come in hand
 [pwncat]: https://github.com/cytopia/pwncat
 [badchars]: https://github.com/cytopia/badchars
 [fuzza]: https://github.com/cytopia/fuzza
+
 
 
 ## :page_facing_up: License
