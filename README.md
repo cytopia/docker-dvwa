@@ -38,19 +38,20 @@ make stop
 
 This setup allows you to configure a few settings via the `.env` file.
 
-| Variable | Settings |
-|----------|----------|
-| `RECAPTCHA_PRIV_KEY` | Required to make the captcha module work. (See `.env-example` for instructions) |
-| `RECAPTCHA_PUB_KEY`  | Required to make the captcha module work. (See `.env-example` for instructions) |
-| `PHP_DISPLAY_ERRORS` | Show PHP errors on the website (if you want a really easy mode) |
+| Variable             | Default | Settings |
+|----------------------|---------|----------|
+| `LISTEN_PORT       ` | `8080`  | Local port for the web server to listen on |
+| `RECAPTCHA_PRIV_KEY` |         | Required to make the captcha module work. (See `.env-example` for instructions) |
+| `RECAPTCHA_PUB_KEY`  |         | Required to make the captcha module work. (See `.env-example` for instructions) |
+| `PHP_DISPLAY_ERRORS` | `0`     | Show PHP errors on the website (if you want a really easy mode) |
 
 The following env variables are default settings and their values can also be changed from within the web interface:
 
-| Variable | Settings |
-|----------|----------|
-| `SECURITY_LEVEL` | Adjust the difficulty of the challenges |
-| `PHPIDS_ENABLED` | Enable PHP Web Application Firewall / Intrusion Detection System (off by default) |
-| `PHPIDS_VERBOSE` | Enabling this will show why the WAF blocked the request on the blocked request. |
+| Variable         | Default  | Settings |
+|------------------|----------|----------|
+| `SECURITY_LEVEL` | `medium` | Adjust the difficulty of the challenges |
+| `PHPIDS_ENABLED` | `0`      | Enable PHP Web Application Firewall / Intrusion Detection System (off by default) |
+| `PHPIDS_VERBOSE` | `0`      | Enabling this will show why the WAF blocked the request on the blocked request. |
 
 **Important:** For the `SECURITY_LEVEL` changes to take effect, you will have to clear your cookies. Alternatively change it in the web interface.
 
