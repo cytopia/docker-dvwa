@@ -48,11 +48,6 @@ You can also get a shell on the web server container via:
 make enter
 ```
 
-View all avalable options:
-```bash
-make help
-```
-
 
 ## :wrench: Configuration
 
