@@ -36,6 +36,7 @@ RUN set -eux \
 	&& { \
 		echo "allow_url_include = on"; \
 		echo "allow_url_fopen   = on"; \
+		echo "error_reporting   = E_ALL | E_STRICT"; \
 	} > /usr/local/etc/php/conf.d/default.ini
 
 # Adjust permissions
