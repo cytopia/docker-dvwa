@@ -63,15 +63,15 @@ This setup allows you to configure a few settings via the `.env` file.
 | `LISTEN_PORT       ` | `8000`  | Local port for the web server to listen on |
 | `RECAPTCHA_PRIV_KEY` |         | Required to make the captcha module work. (See [FAQ](#bulb-faq) section below) |
 | `RECAPTCHA_PUB_KEY`  |         | Required to make the captcha module work. (See [FAQ](#bulb-faq) section below) |
-| `PHP_DISPLAY_ERRORS` | `0`     | Show PHP errors on the website (if you want a really easy mode) |
+| `PHP_DISPLAY_ERRORS` | `0`     | Set to `1` to display PHP errors (if you want a really easy mode) |
 
-The following env variables are default settings and their values can also be changed from within the web interface:
+The following `.env` file variables are default settings and their values can also be changed from within the web interface:
 
 | Variable         | Default  | Settings |
 |------------------|----------|----------|
-| `SECURITY_LEVEL` | `medium` | Adjust the difficulty of the challenges |
-| `PHPIDS_ENABLED` | `0`      | Enable PHP Web Application Firewall / Intrusion Detection System (off by default) |
-| `PHPIDS_VERBOSE` | `0`      | Enabling this will show why the WAF blocked the request on the blocked request. |
+| `SECURITY_LEVEL` | `medium` | Adjust the difficulty level for the challenges (`low`, `medium`, `high` or `impossible`) |
+| `PHPIDS_ENABLED` | `0`      | Set to `1` to enable PHP Web Application Firewall / Intrusion Detection System (off by default) |
+| `PHPIDS_VERBOSE` | `0`      | Set to `1` to display WAF/IDS reasons for blocked requests |
 
 **Important:** For the `SECURITY_LEVEL` changes to take effect, you will have to clear your cookies. Alternatively change it in the web interface.
 
@@ -108,7 +108,7 @@ The following env variables are default settings and their values can also be ch
 
 ## :lock: [cytopia](https://github.com/cytopia) sec tools
 
-Below is a list of sec tools and docs I am maintaining, which might come in handy working on DVWA..
+Below is a list of sec tools and docs I am maintaining, which might come in handy working on DVWA.
 
 | Name                 | Category             | Language   | Description |
 |----------------------|----------------------|------------|-------------|
