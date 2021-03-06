@@ -8,7 +8,7 @@ RUN set -eux \
 
 FROM php:7.2-apache
 
-# Satisfy requirements
+# Satisfy PHP requirements
 RUN set -eux \
 	&& apt update \
 	&& apt install -y \
@@ -16,6 +16,12 @@ RUN set -eux \
 	&& docker-php-ext-install gd \
 	&& docker-php-ext-install mysqli \
 	&& docker-php-ext-install pdo_mysql
+
+# Satisfy Application requirements
+RUN set -eux \
+	&& apt update \
+	&& apt install -y \
+		iputils-ping
 
 # Copy source
 COPY --from=builder /DVWA/ /var/www/html/
