@@ -70,4 +70,4 @@ fi
 
 
 # Normal start
-apache2-foreground
+exec apache2-foreground
