@@ -147,6 +147,19 @@ make enter
 
 
 
+<details><summary><strong>Q:</strong> How can I access/view the MySQL database?</summary>
+<p><br/>
+  <strong>Note:</strong> Doing so is basically cheating, but if you really need to, you can do so.<br/><br/>
+  This Docker image bundles <a href="https://www.adminer.org/">Adminer</a> (a PHP web interace similar to phpMyAdmin) and you can access it here: http://localhost:8000/adminer.php<br/>
+  <ul>
+   <li><strong>Server:</strong> <code>dvwa_db</code></li>
+   <li><strong>Username:</strong> <code>root</code></li>
+   <li><strong>Password:</strong> <code>rootpass</code></li>
+</p>
+</details>
+
+
+
 ## :lock: [cytopia](https://github.com/cytopia) sec tools
 
 Below is a list of sec tools and docs I am maintaining, which might come in handy working on DVWA.

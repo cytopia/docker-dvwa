@@ -1,5 +1,6 @@
 FROM php:7.2-apache as builder
 
+# Get DVWA
 RUN set -eux \
 	&& apt update \
 	&& apt install -y git \
@@ -7,6 +8,14 @@ RUN set -eux \
 	&& rm -rf /DVWA/.git \
 	&& rm -rf /DVWA/.github \
 	&& rm -rf /DVWA/.gitignore
+
+# Get Adminer
+RUN set -eux \
+	&& URL="$( \
+		curl -sS --fail https://www.adminer.org/ \
+		| grep -Eo 'https://github.com/vrana/adminer/releases/download/v[.0-9]+/adminer-[.0-9]+-mysql-en.php' \
+	)" \
+	&& curl -sS --fail -L "${URL}" > /adminer.php
 
 
 FROM php:7.2-apache
@@ -28,6 +37,7 @@ RUN set -eux \
 
 # Copy source
 COPY --from=builder /DVWA/ /var/www/html/
+COPY --from=builder /adminer.php /var/www/html/adminer.php
 COPY ./config.inc.php /var/www/html/config/config.inc.php
 COPY ./entrypoint.sh/ /entrypoint.sh
 
