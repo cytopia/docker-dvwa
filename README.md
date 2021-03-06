@@ -1,5 +1,12 @@
 # Dockerized [DVWA](https://github.com/digininja/DVWA)
 
+**[Install](#tada-install)** |
+**[Start](#zap-start)** |
+**[Stop](#no_entry_sign-stop)** |
+**[Usage](#computer-usage)** |
+**[Configuration](#wrench-configuration)** |
+**[FAQ](#bulb-faq)** |
+**[License](#page_facing_up-license)**
 
 DVWA has an official Docker image available at [Dockerhub](https://hub.docker.com/r/vulnerables/web-dvwa/), however by the time of writing this image did not receive any updates for 2 years.
 
@@ -75,7 +82,8 @@ The following env variables are default settings and their values can also be ch
 * **Q:** How can I reset the database and start fresh?<br/>
   **A:** The database uses a Docker volume and you can simply remove it via:<br/>
   ```bash
-  # the command below will stop all running container, remove their state and delete the MySQL volume.
+  # the command below will stop all running container,
+  # remove their state and delete the MySQL docker volume.
   make reset
   ```
 
