@@ -99,6 +99,7 @@ The following env variables are default settings and their values can also be ch
   ![](doc/captcha-01.png)<br/>
   * Ensure to choose `reCaptcha v2`
   * Ensure to add *all* domains you plan on using
+
   ![](doc/captcha-02.png)<br/>
   * Add `SITE KEY` to the `RECAPTCHA_PUB_KEY` variable in your `.env` file
   * Add `SECRET KEY` to the `RECAPTCHA_PRIV_KEY` variable in your `.env` file
