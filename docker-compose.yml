@@ -6,7 +6,7 @@ services:
     build: ./docker/
     restart: unless-stopped
     ports:
-      - "${LISTEN_PORT:-8080}:80"
+      - "${LISTEN_PORT:-8000}:80"
     networks:
       - app-net
     environment:
