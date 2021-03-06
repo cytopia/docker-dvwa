@@ -35,4 +35,4 @@ networks:
     driver: bridge
 
 volumes:
-  dvwa_db_data: {}
+  dvwa_db_data:
