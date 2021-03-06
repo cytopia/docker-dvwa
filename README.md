@@ -85,7 +85,7 @@ Browsers ususally bypass <code>localhost</code> or <code>127.0.01</code> for pro
 127.0.0.1  dvwa
 ```
 
-Then use http://dvwa:8000 in your browser.
+Then use <a href="http://dvwa:8000">http://dvwa:8000</a> in your browser.
 </p>
 </details>
 
@@ -131,7 +131,7 @@ make enter
 
 <details><summary><strong>Q:</strong> How do I setup the reCAPTCHA key?</summary>
 <p><br/>
-  Go to https://www.google.com/recaptcha/admin and generate your captcha as shown below:<br/>
+  Go to <a href="https://www.google.com/recaptcha/admin">https://www.google.com/recaptcha/admin</a> and generate your captcha as shown below:<br/>
   <ul>
    <li>Ensure to choose <code>reCAPTCHA v2</code></li>
    <li>Ensure to add <i>all</i> domains you plan on using</li>
@@ -150,7 +150,7 @@ make enter
 <details><summary><strong>Q:</strong> How can I access/view the MySQL database?</summary>
 <p><br/>
   <strong>Note:</strong> Doing so is basically cheating, but if you really need to, you can do so.<br/><br/>
-  This Docker image bundles <a href="https://www.adminer.org/">Adminer</a> (a PHP web interace similar to phpMyAdmin) and you can access it here: http://localhost:8000/adminer.php<br/>
+  This Docker image bundles <a href="https://www.adminer.org/">Adminer</a> (a PHP web interace similar to phpMyAdmin) and you can access it here: <a href="http://localhost:8000/adminer.php">http://localhost:8000/adminer.php</a><br/>
   <ul>
    <li><strong>Server:</strong> <code>dvwa_db</code></li>
    <li><strong>Username:</strong> <code>root</code></li>
