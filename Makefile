@@ -2,11 +2,12 @@ ifneq (,)
 .error This Makefile requires GNU Make.
 endif
 
-.PHONY: help start stop reset enter
+.PHONY: help start stop logs reset enter
 
 help:
 	@echo "start       Start docker-compose"
 	@echo "stop        Stop docker-compose"
+	@echo "logs        View web server access/error logs"
 	@echo "reset       Stop container, remove their state and the remove Docker volume"
 	@echo "enter       Enter the web server container"
 
@@ -15,6 +16,9 @@ start:
 
 stop:
 	docker-compose stop
+
+logs:
+	docker-compose logs -f dvwa_web
 
 reset:
 	docker-compose kill 2> /dev/null || true

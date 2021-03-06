@@ -42,12 +42,20 @@ make stop
 
 ## :computer: Usage
 
-After typing `make start` you can access DVWA in your browser via:
+#### Access the web page
+After running `make start` you can access DVWA in your browser via:
 
 * Url: http://localhost:8000
 * User: `admin`
 * Pass: `password`
 
+#### View log files
+You can view the web server access/error logs via:
+```bash
+make logs
+```
+
+#### Get a shell
 You can also get a shell on the web server container via:
 ```bash
 make enter
