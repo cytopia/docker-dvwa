@@ -33,7 +33,9 @@ RUN set -eux \
 RUN set -eux \
 	&& apt update \
 	&& apt install -y \
-		iputils-ping
+		iputils-ping \
+		netcat \
+		telnet
 
 # Copy source
 COPY --from=builder /DVWA/ /var/www/html/
