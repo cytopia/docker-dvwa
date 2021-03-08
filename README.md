@@ -76,9 +76,9 @@ The following `.env` file variables are default settings and their values can al
 
 ## :bulb: FAQ
 
-<details><summary><strong>Q:</strong> I want to proxy through <a href="https://portswigger.net/burp">BurpSuite</a>, but it does not work on <code>localhost</code> or <code>127.0.01</code>.</summary>
+<details><summary><strong>Q:</strong> I want to proxy through <a href="https://portswigger.net/burp">BurpSuite</a>, but it does not work on <code>localhost</code> or <code>127.0.0.1</code>.</summary>
 <p><br/>
-Browsers ususally bypass <code>localhost</code> or <code>127.0.01</code> for proxy traffic. One solution is to add an alternative hostname to <code>/etc/hosts</code> and access the application through that.<br/><br/>
+Browsers ususally bypass <code>localhost</code> or <code>127.0.0.1</code> for proxy traffic. One solution is to add an alternative hostname to <code>/etc/hosts</code> and access the application through that.<br/><br/>
 <code>/etc/hosts</code>:
 
 ```bash
