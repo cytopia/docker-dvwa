@@ -11,7 +11,7 @@ help:
 	@echo "reset       Stop container, remove their state and the remove Docker volume"
 	@echo "enter       Enter the web server container"
 
-start:
+start: .env
 	docker-compose up -d
 
 stop:
@@ -28,3 +28,7 @@ reset:
 
 enter:
 	docker-compose exec -w /var/www/html dvwa_web bash
+
+# Copy .env from .env-example if it does not exist
+.env:
+	cp .env-example .env

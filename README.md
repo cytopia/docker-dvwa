@@ -16,17 +16,15 @@ If you prefer an always up-to-date version, use the here provided Docker Compose
 
 
 ## :tada: Install
-
-Download repository and copy `.env` file
+Clone repository from GitHub:
 ```bash
 git clone https://github.com/cytopia/docker-dvwa
-cd docker-dvwa
-cp .env-example .env
 ```
 
 
 
 ## :zap: Start
+Inside the `docker-dvwa/` directory:
 ```bash
 make start
 ```
@@ -34,6 +32,7 @@ make start
 
 
 ## :no_entry_sign: Stop
+Inside the `docker-dvwa/` directory:
 ```bash
 make stop
 ```
