@@ -161,6 +161,18 @@ make enter
 
 
 
+<details><summary><strong>Q:</strong> How can I rebuild the Docker image?</summary>
+<p><br/>
+To rebuild the Docker image against new updates in <a href="https://github.com/digininja/DVWA">DVWA master branch</a>, simply do the following:<br/>
+
+```bash
+make rebuild
+```
+</p>
+</details>
+
+
+
 ## :lock: [cytopia](https://github.com/cytopia) sec tools
 
 Below is a list of sec tools and docs I am maintaining, which might come in handy working on DVWA.
