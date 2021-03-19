@@ -24,7 +24,7 @@ git clone https://github.com/cytopia/docker-dvwa
 
 
 ## :zap: Start
-Inside the `docker-dvwa/` directory:
+Inside the cloned repository (`docker-dvwa/` directory):
 ```bash
 make start
 ```
@@ -32,7 +32,7 @@ make start
 
 
 ## :no_entry_sign: Stop
-Inside the `docker-dvwa/` directory:
+Inside the cloned repository (`docker-dvwa/` directory):
 ```bash
 make stop
 ```
