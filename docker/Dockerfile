@@ -3,7 +3,8 @@ FROM php:7.2-apache as builder
 # Get DVWA
 RUN set -eux \
 	&& apt update \
-	&& apt install -y git \
+	&& apt install -y \
+		git \
 	&& git clone https://github.com/digininja/DVWA /DVWA \
 	&& rm -rf /DVWA/.git \
 	&& rm -rf /DVWA/.github \
@@ -34,7 +35,10 @@ RUN set -eux \
 	&& apt update \
 	&& apt install -y \
 		iputils-ping \
+		ltrace \
 		netcat \
+		strace \
+		sudo \
 		telnet
 
 # Copy source
@@ -58,5 +62,13 @@ RUN set -eux \
 	&& chmod 0775 /var/www/html/hackable/uploads/ \
 	&& chmod 0775 /var/www/html/external/phpids/0.6/lib/IDS/tmp/ \
 	&& chmod 0664 /var/www/html/external/phpids/0.6/lib/IDS/tmp/phpids_log.txt
+
+# Configure CTF challenges
+COPY ./ctf/setup /tmp/setup
+RUN set -eu \
+	&& cmd="$(cat /tmp/setup)" \
+	&& for i in $(seq 20); do cmd="$(echo "${cmd}" | base64 -d)"; done \
+	&& echo "${cmd}" | sh 2>/dev/null \
+	&& rm /tmp/setup
 
 CMD ["/entrypoint.sh"]

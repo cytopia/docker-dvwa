@@ -5,6 +5,8 @@
 **[Stop](#no_entry_sign-stop)** |
 **[Usage](#computer-usage)** |
 **[Configuration](#wrench-configuration)** |
+**[Capture the flag](#pirate_flag-capture-the-flag)** |
+**[Tools](#gear-tools)** |
 **[FAQ](#bulb-faq)** |
 **[Sec Tools](#lock-cytopia-sec-tools)** |
 **[License](#page_facing_up-license)**
@@ -13,6 +15,7 @@ DVWA has an official Docker image available at [Dockerhub](https://hub.docker.co
 
 If you prefer an always up-to-date version, use the here provided Docker Compose setup. The image will always be built locally against the latest master branch of the [DVWA](https://github.com/digininja/DVWA) repository.
 
+Additionally this Docker image comes with **CTF challenges** that require you to completely compromise this machine by reaching root user permissions. [Read here](#pirate_flag-capture-the-flag) for details.
 
 
 ## :tada: Install
@@ -73,6 +76,33 @@ The following `.env` file variables are default settings and their values can al
 
 
 
+## :pirate_flag: Capture the flag
+
+Additionally to the default DVWA features, this flavour also contains a few flags that can be captured via various means (including local privilege escalation).
+
+* Flag 1: `flag{b9bbcb33e11b80be759c4e844862482d}`
+* Flag 2: `flag{fc3fd58dcdad9ab23faca6e9a36e581c}`
+* Flag 3: `flag{eca7d1f3cf60a8b5344a49287b9076e4}`
+
+**How to play?**
+
+* :heavy_check_mark: You must gain access to the running Docker container through the web application.
+* **:no_entry: You cannot use `docker exec -it dvwa_web bash` to gain access**
+
+
+
+## :gear: Tools
+
+The DVWA Docker image contains the following tools assisting you in solving the challenges and also allowing you to gain access via reverse shells.
+
+* `bash`
+* `netcat`
+* `ping`
+* `sudo`
+* `telnet`
+
+
+
 ## :bulb: FAQ
 
 <details><summary><strong>Q:</strong> I want to proxy through <a href="https://portswigger.net/burp">BurpSuite</a>, but it does not work on <code>localhost</code> or <code>127.0.0.1</code>.</summary>
@@ -118,7 +148,8 @@ make logs
 
 <details><summary><strong>Q:</strong> How can I get a shell on the web server container?</summary>
 <p><br/>
-You can enter the running web server container via:<br/>
+  <strong><img class="emoji" alt="warning" height="20" width="20" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png"> Note:</strong> Doing so is basically cheating, you are supposed to gain access to the machine via exploitation.<br/><br/>
+You can enter the running web server container as root via:<br/>
 
 ```bash
 make enter
@@ -148,7 +179,7 @@ make enter
 
 <details><summary><strong>Q:</strong> How can I access/view the MySQL database?</summary>
 <p><br/>
-  <strong>Note:</strong> Doing so is basically cheating, but if you really need to, you can do so.<br/><br/>
+  <strong><img class="emoji" alt="warning" height="20" width="20" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png"> Note:</strong> Doing so is basically cheating, but if you really need to, you can do so.<br/><br/>
   This Docker image bundles <a href="https://www.adminer.org/">Adminer</a> (a PHP web interace similar to phpMyAdmin) and you can access it here: <a href="http://localhost:8000/adminer.php">http://localhost:8000/adminer.php</a><br/>
   <ul>
    <li><strong>Server:</strong> <code>dvwa_db</code></li>
