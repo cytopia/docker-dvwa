@@ -4,11 +4,7 @@ version: '2.3'
 services:
 
   dvwa_web:
-    build:
-      context: ./docker/
-      args:
-        PHP_VERSION: ${PHP_VERSION:-7.2}
-    image: cytopia/dvwa:${PHP_VERSION:-7.2}
+    image: cytopia/dvwa:php-${PHP_VERSION:-7.2}
     restart: unless-stopped
     ports:
       - "${LISTEN_PORT:-8000}:80"
