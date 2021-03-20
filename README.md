@@ -11,6 +11,9 @@
 **[Sec Tools](#lock-cytopia-sec-tools)** |
 **[License](#page_facing_up-license)**
 
+[![Linux](https://github.com/cytopia/docker-dvwa/actions/workflows/test.yml/badge.svg)](https://github.com/cytopia/docker-dvwa/actions/workflows/test.yml)
+
+
 DVWA has an official Docker image available at [Dockerhub](https://hub.docker.com/r/vulnerables/web-dvwa/), however by the time of writing this image did not receive any updates for 2 years.
 
 If you prefer an always up-to-date version, use the here provided Docker Compose setup. The image will always be built locally against the latest master branch of the [DVWA](https://github.com/digininja/DVWA) repository.
@@ -58,7 +61,8 @@ This setup allows you to configure a few settings via the `.env` file.
 
 | Variable             | Default | Settings |
 |----------------------|---------|----------|
-| `LISTEN_PORT       ` | `8000`  | Local port for the web server to listen on |
+| `PHP_VERSION`        | `7.2`   | PHP version to run DVWA (`5.6`, `7.0`, `7.1`, `7.2`, `7.3`, `7.4` or `8.0`) |
+| `LISTEN_PORT`        | `8000`  | Local port for the web server to listen on |
 | `RECAPTCHA_PRIV_KEY` |         | Required to make the captcha module work. (See [FAQ](#bulb-faq) section below) |
 | `RECAPTCHA_PUB_KEY`  |         | Required to make the captcha module work. (See [FAQ](#bulb-faq) section below) |
 | `PHP_DISPLAY_ERRORS` | `0`     | Set to `1` to display PHP errors (if you want a really easy mode) |

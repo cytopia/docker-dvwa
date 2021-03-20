@@ -20,7 +20,7 @@ start: .env
 
 stop:
 	@echo "Stopping DVWA"
-	docker-compose stop
+	docker-compose down
 
 logs:
 	docker-compose logs -f dvwa_web
