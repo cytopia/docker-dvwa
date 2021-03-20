@@ -11,7 +11,7 @@
 **[Sec Tools](#lock-cytopia-sec-tools)** |
 **[License](#page_facing_up-license)**
 
-[![Linux](https://github.com/cytopia/docker-dvwa/actions/workflows/test.yml/badge.svg)](https://github.com/cytopia/docker-dvwa/actions/workflows/test.yml)
+[![Linux](https://github.com/cytopia/docker-dvwa/actions/workflows/build.yml/badge.svg)](https://github.com/cytopia/docker-dvwa/actions/workflows/build.yml)
 
 
 DVWA has an official Docker image available at [Dockerhub](https://hub.docker.com/r/vulnerables/web-dvwa/), however by the time of writing this image did not receive any updates for 2 years.
