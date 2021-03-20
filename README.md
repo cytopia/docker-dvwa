@@ -16,9 +16,10 @@
 
 DVWA has an official Docker image available at [Dockerhub](https://hub.docker.com/r/vulnerables/web-dvwa/), however by the time of writing this image did not receive any updates for 2 years.
 
-If you prefer an always up-to-date version, use the here provided Docker Compose setup. The image will always be built locally against the latest master branch of the [DVWA](https://github.com/digininja/DVWA) repository.
+If you need an always up-to-date version, use the here provided Docker Compose setup. The image is built every night against the latest master branch of the [DVWA](https://github.com/digininja/DVWA) repository and can also locally be built.
 
-Additionally this Docker image comes with **CTF challenges** that require you to completely compromise this machine by reaching root user permissions. [Read here](#pirate_flag-capture-the-flag) for details.
+Additionally this Docker image comes with **CTF challenges** that require you to completely compromise the machine and reach root access. [Read here](#pirate_flag-capture-the-flag) for details.
+
 
 
 ## :tada: Install
@@ -196,12 +197,16 @@ make enter
 
 
 
-<details><summary><strong>Q:</strong> How can I rebuild the Docker image?</summary>
+<details><summary><strong>Q:</strong> How can I build the Docker image locally?</summary>
 <p><br/>
-To rebuild the Docker image against new updates in <a href="https://github.com/digininja/DVWA">DVWA master branch</a>, simply do the following:<br/>
+To build or rebuild the Docker image against new updates in <a href="https://github.com/digininja/DVWA">DVWA master branch</a>, simply do the following:<br/>
 
 ```bash
+# This is builing the image for the default PHP version
 make rebuild
+
+# This is building the image with PHP 8.0
+make rebuild PHP=8.0
 ```
 </p>
 </details>

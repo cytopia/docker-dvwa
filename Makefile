@@ -72,6 +72,7 @@ _update_db:
 
 build:
 	docker build $(NO_CACHE) --build-arg PHP_VERSION=$(PHP) -t $(IMAGE) -f $(DIR)/Dockerfile $(DIR)
+	$(MAKE) --no-print-directory tag TAG=php-$(PHP)
 
 rebuild: NO_CACHE=--no-cache
 rebuild: build

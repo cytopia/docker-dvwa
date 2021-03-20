@@ -74,9 +74,9 @@ jobs:
           )"
           # Docker Tag
           if [ "${GIT_TYPE}" = "BRANCH" ] && [ "${GIT_SLUG}" = "master" ]; then
-            DOCKER_TAG="${PHP}"
+            DOCKER_TAG="php-${PHP}"
           else
-            DOCKER_TAG="${PHP}-${GIT_SLUG}"
+            DOCKER_TAG="php-${PHP}-${GIT_SLUG}"
           fi
 
           # Output
@@ -147,7 +147,6 @@ jobs:
             return 1;
           }
           retry make build PHP=${PHP}
-          make tag TAG=${PHP}
         env:
           PHP: ${{ matrix.php }}
           RETRIES: 20
