@@ -1,14 +1,16 @@
-FROM php:7.2-apache as builder
+ARG PHP_VERSION
+FROM php:${PHP_VERSION}-apache as builder
 
 # Get DVWA
 RUN set -eux \
-	&& apt update \
-	&& apt install -y \
+	&& apt-get update \
+	&& apt-get install -y \
 		git \
 	&& git clone https://github.com/digininja/DVWA /DVWA \
 	&& rm -rf /DVWA/.git \
 	&& rm -rf /DVWA/.github \
-	&& rm -rf /DVWA/.gitignore
+	&& rm -rf /DVWA/.gitignore \
+	&& rm -rf /DVWA/php.ini
 
 # Get Adminer
 RUN set -eux \
@@ -19,27 +21,32 @@ RUN set -eux \
 	&& curl -sS --fail -L "${URL}" > /adminer.php
 
 
-FROM php:7.2-apache
+ARG PHP_VERSION
+FROM php:${PHP_VERSION}-apache
 
 # Satisfy PHP requirements
 RUN set -eux \
-	&& apt update \
-	&& apt install -y \
+	&& apt-get update \
+	&& apt-get install -y \
 		libpng-dev \
 	&& docker-php-ext-install gd \
 	&& docker-php-ext-install mysqli \
-	&& docker-php-ext-install pdo_mysql
+	&& docker-php-ext-install pdo_mysql \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/*
 
 # Satisfy Application requirements
 RUN set -eux \
-	&& apt update \
-	&& apt install -y \
+	&& apt-get update \
+	&& apt-get install -y \
 		iputils-ping \
 		ltrace \
 		netcat \
 		strace \
 		sudo \
-		telnet
+		telnet \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/*
 
 # Copy source
 COPY --from=builder /DVWA/ /var/www/html/
@@ -53,6 +60,7 @@ RUN set -eux \
 		echo "allow_url_include = on"; \
 		echo "allow_url_fopen   = on"; \
 		echo "error_reporting   = E_ALL | E_STRICT"; \
+		echo "magic_quotes_gpc  = off"; \
 	} > /usr/local/etc/php/conf.d/default.ini
 
 # Adjust permissions
