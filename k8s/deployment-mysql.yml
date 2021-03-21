@@ -1,0 +1,66 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+
+
+###
+### Deployment Metadata
+###
+metadata:
+  name: dvwa-mysql
+
+
+###
+### Specs
+###
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: dvwa-mysql
+      tier: backend
+
+  template:
+
+    # Template Metadata to be used by service for discovery
+    metadata:
+      labels:
+        app: dvwa-mysql
+        tier: backend
+
+    # Container/Volume definition
+    spec:
+      containers:
+        - name: mysql
+          image: mariadb:10.4
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: dvwa-mysql-vol
+              mountPath: /var/lib/mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: dvwa-secrets
+                  key: ROOT_PASSWORD
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: dvwa-secrets
+                  key: DVWA_USERNAME
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: dvwa-secrets
+                  key: DVWA_PASSWORD
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: dvwa-secrets
+                  key: DVWA_DATABASE
+      volumes:
+        - name: dvwa-mysql-vol
+          persistentVolumeClaim:
+            claimName: dvwa-mysql-data-claim

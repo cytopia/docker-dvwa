@@ -275,6 +275,19 @@ terraform apply
 For more information see [Terraform module](aws/).
 
 
+### Kubernetes
+
+This repository ships Kubernetes deployments to run DVWA on K8s or minikube.
+
+```bash
+cd k8s/
+kubectl apply -f .
+```
+
+For more information see [k8s](k8s/).
+
+
+
 
 ## :lock: [cytopia](https://github.com/cytopia) sec tools
 

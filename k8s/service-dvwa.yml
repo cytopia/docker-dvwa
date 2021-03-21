@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dvwa-web-service
+spec:
+  selector:
+    app: dvwa-web
+    tier: frontend
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      # Port accessible inside cluster
+      port: 8081
+      # Port to forward to inside the pod
+      targetPort: 80

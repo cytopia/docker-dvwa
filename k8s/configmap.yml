@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dvwa-config
+data:
+  RECAPTCHA_PRIV_KEY: ""
+  RECAPTCHA_PUB_KEY: ""
+  SECURITY_LEVEL: "low"
+  PHPIDS_ENABLED: "0"
+  PHPIDS_VERBOSE: "1"
+  PHP_DISPLAY_ERRORS: "1"
