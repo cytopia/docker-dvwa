@@ -260,6 +260,8 @@ make rebuild PHP=8.0
 
 ### AWS
 
+[![Terraform](https://github.com/cytopia/docker-dvwa/actions/workflows/terraform.yml/badge.svg)](https://github.com/cytopia/docker-dvwa/actions/workflows/terraform.yml)
+
 This repository ships a Terraform module to deploy DVWA on AWS.
 
 ```bash
@@ -271,7 +273,6 @@ terraform apply
 ```
 
 For more information see [Terraform module](aws/).
-
 
 
 
