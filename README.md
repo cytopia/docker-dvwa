@@ -154,7 +154,10 @@ The here provided Docker images are built against all common PHP versions and yo
 # PHP VERSION
 # -----------
 # Uncomment one of the PHP versions you want to use for DVWA
+#PHP_VERSION=5.5
 #PHP_VERSION=5.6
+#PHP_VERSION=7.0
+#PHP_VERSION=7.1
 PHP_VERSION=7.2
 #PHP_VERSION=7.3
 #PHP_VERSION=7.4
