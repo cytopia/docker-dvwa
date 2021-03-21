@@ -71,7 +71,7 @@ After running `make start` you can access DVWA in your browser via:
 * :whale: - Works out of the box on Linux, MacOS and Windows via Docker
 * :elephant: - Comes in flavours of all common [PHP version](#wrench-configuration)
 * :pirate_flag: - Enhances DVWA with [local exploitation](#pirate_flag-capture-the-flag) challenges
-* :repeat: - Docker images are [updated every nightl](https://hub.docker.com/r/cytopia/dvwa) against [DVWA](https://github.com/digininja/DVWA) master branch
+* :repeat: - Docker images are [updated every night](https://hub.docker.com/r/cytopia/dvwa) against [DVWA](https://github.com/digininja/DVWA) master branch
 
 
 
@@ -146,7 +146,7 @@ Then use <a href="http://dvwa:8000">http://dvwa:8000</a> in your browser.
 
 <details><summary><strong>Q:</strong> How can I run DVWA with a different PHP version?</summary>
 <p><br/>
-The here provided Docker images are built against all common PHP versions and you can easily select your version of choice in the [`.env`](.env-example) prior startup. To do so, just uncomment the version of choice and restart the Docker Compose stack:<br/>
+The here provided Docker images are built against all common PHP versions and you can easily select your version of choice in the [.env](.env-example) prior startup. To do so, just uncomment the version of choice and restart the Docker Compose stack:<br/>
 <code>.env</code>
 
 ```bash
@@ -158,9 +158,6 @@ PHP_VERSION=7.2
 #PHP_VERSION=7.3
 #PHP_VERSION=7.4
 #PHP_VERSION=8.0
-
-# the command below will stop all running container,
-# remove their state and delete the MySQL docker volume.
 ```
 </p>
 </details>
