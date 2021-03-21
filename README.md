@@ -4,6 +4,7 @@
 **[Start](#zap-start)** |
 **[Stop](#no_entry_sign-stop)** |
 **[Usage](#computer-usage)** |
+**[Features](#star-features)** |
 **[Configuration](#wrench-configuration)** |
 **[Capture the flag](#pirate_flag-capture-the-flag)** |
 **[Tools](#gear-tools)** |
@@ -11,16 +12,19 @@
 **[Sec Tools](#lock-cytopia-sec-tools)** |
 **[License](#page_facing_up-license)**
 
-[![Linux](https://github.com/cytopia/docker-dvwa/actions/workflows/build.yml/badge.svg)](https://github.com/cytopia/docker-dvwa/actions/workflows/build.yml)
-[![Linux](https://github.com/cytopia/docker-dvwa/actions/workflows/nightly.yml/badge.svg)](https://github.com/cytopia/docker-dvwa/actions/workflows/nightly.yml)
+[![Build](https://github.com/cytopia/docker-dvwa/actions/workflows/build.yml/badge.svg)](https://github.com/cytopia/docker-dvwa/actions/workflows/build.yml)
+[![Nightly](https://github.com/cytopia/docker-dvwa/actions/workflows/nightly.yml/badge.svg)](https://github.com/cytopia/docker-dvwa/actions/workflows/nightly.yml)
 [![](https://img.shields.io/docker/pulls/cytopia/dvwa.svg)](https://hub.docker.com/r/cytopia/dvwa)
 [![](https://img.shields.io/badge/github-cytopia%2Fdocker--dvwa-red.svg)](https://github.com/cytopia/docker-dvwa "github.com/cytopia/docker-dvwa")
 [![License](https://img.shields.io/badge/license-MIT-%233DA639.svg)](https://opensource.org/licenses/MIT)
 
+> Damn Vulnerable Web Application (DVWA) is a PHP/MySQL web application that is damn vulnerable. Its main goal is to be an aid for security professionals to test their skills and tools in a legal environment, help web developers better understand the processes of securing web applications and to aid both students & teachers to learn about web application security in a controlled class room environment.
+>
+> https://github.com/digininja/DVWA
 
 DVWA has an official Docker image available at [Dockerhub](https://hub.docker.com/r/vulnerables/web-dvwa/), however by the time of writing this image did not receive any updates for 2 years.
 
-If you need an always up-to-date version, use the here provided Docker Compose setup. The image is built every night against the latest master branch of the [DVWA](https://github.com/digininja/DVWA) repository and can also locally be built.
+If you need an always up-to-date version, use the here provided Docker Compose setup. The image is built every night against the latest master branch of the [DVWA](https://github.com/digininja/DVWA) repository and can also be built locally.
 
 Additionally this Docker image comes with **CTF challenges** that require you to completely compromise the machine and reach root access. [Read here](#pirate_flag-capture-the-flag) for details.
 
@@ -62,13 +66,22 @@ After running `make start` you can access DVWA in your browser via:
 
 
 
+## :star: Features
+
+* :whale: - Works out of the box on Linux, MacOS and Windows via Docker
+* :elephant: - Comes in flavours of all common [PHP version](#wrench-configuration)
+* :pirate_flag: - Enhances DVWA with [local exploitation](#pirate_flag-capture-the-flag) challenges
+* :repeat: - Docker images are [updated every nightl](https://hub.docker.com/r/cytopia/dvwa) against [DVWA](https://github.com/digininja/DVWA) master branch
+
+
+
 ## :wrench: Configuration
 
 This setup allows you to configure a few settings via the `.env` file.
 
 | Variable             | Default | Settings |
 |----------------------|---------|----------|
-| `PHP_VERSION`        | `7.2`   | PHP version to run DVWA (`5.6`, `7.0`, `7.1`, `7.2`, `7.3`, `7.4` or `8.0`) |
+| `PHP_VERSION`        | `7.2`   | PHP version to run DVWA (`5.5`, `5.6`, `7.0`, `7.1`, `7.2`, `7.3`, `7.4` or `8.0`) |
 | `LISTEN_PORT`        | `8000`  | Local port for the web server to listen on |
 | `RECAPTCHA_PRIV_KEY` |         | Required to make the captcha module work. (See [FAQ](#bulb-faq) section below) |
 | `RECAPTCHA_PUB_KEY`  |         | Required to make the captcha module work. (See [FAQ](#bulb-faq) section below) |
@@ -126,6 +139,29 @@ Browsers ususally bypass <code>localhost</code> or <code>127.0.0.1</code> for pr
 ```
 
 Then use <a href="http://dvwa:8000">http://dvwa:8000</a> in your browser.
+</p>
+</details>
+
+
+
+<details><summary><strong>Q:</strong> How can I run DVWA with a different PHP version?</summary>
+<p><br/>
+The here provided Docker images are built against all common PHP versions and you can easily select your version of choice in the [`.env`](.env-example) prior startup. To do so, just uncomment the version of choice and restart the Docker Compose stack:<br/>
+<code>.env</code>
+
+```bash
+# PHP VERSION
+# -----------
+# Uncomment one of the PHP versions you want to use for DVWA
+#PHP_VERSION=5.6
+PHP_VERSION=7.2
+#PHP_VERSION=7.3
+#PHP_VERSION=7.4
+#PHP_VERSION=8.0
+
+# the command below will stop all running container,
+# remove their state and delete the MySQL docker volume.
+```
 </p>
 </details>
 
