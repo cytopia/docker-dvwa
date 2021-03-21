@@ -73,7 +73,7 @@ resource "aws_security_group" "web" {
 # --------------------------------------------------------------------------------
 
 resource "aws_key_pair" "web" {
-  count = length(var.public_key) > 0 ? 1 : 0
+  count      = length(var.public_key) > 0 ? 1 : 0
   key_name   = "dvwa-key"
   public_key = var.public_key
 }
