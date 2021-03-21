@@ -1,0 +1,61 @@
+---
+
+# -------------------------------------------------------------------------------------------------
+# Job Name
+# -------------------------------------------------------------------------------------------------
+name: terraform
+
+
+# -------------------------------------------------------------------------------------------------
+# When to run
+# -------------------------------------------------------------------------------------------------
+on:
+  # Runs on Pull Requests
+  pull_request:
+
+  # Runs on master Branch and Tags
+  push:
+    branches:
+      - master
+    tags:
+      - '[0-9]+.[0-9]+*'
+
+
+# -------------------------------------------------------------------------------------------------
+# What to run
+# -------------------------------------------------------------------------------------------------
+jobs:
+  terraform:
+    name: Terraform
+    runs-on: ubuntu-latest
+    steps:
+
+      # ------------------------------------------------------------
+      # Checkout repository
+      # ------------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      # ------------------------------------------------------------
+      # Tests
+      # ------------------------------------------------------------
+      - name: Check Terraform documentation
+        shell: bash
+        run: |
+          cd aws/
+          make gen
+          git diff --quiet || { echo "Build Changes"; git diff; git status; false; };
+
+      - name: Lint Terraform files
+        shell: bash
+        run: |
+          cd aws/
+          make lint
+
+      - name: Test Terraform files
+        shell: bash
+        run: |
+          cd aws/
+          make test
