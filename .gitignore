@@ -1,1 +1,4 @@
 .env
+aws/terraform.tfstate*
+aws/terraform.tfvars
+.terraform/
