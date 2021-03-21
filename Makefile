@@ -78,7 +78,11 @@ rebuild: NO_CACHE=--no-cache
 rebuild: build
 
 
-test:
+test: _test-available
+test: _test-ready
+
+.PHONY: _test-available
+_test-available:
 	@echo "Testing for login page to become available"
 	@SUCCESS=0; \
 	for in in $$(seq 60); do \
@@ -95,6 +99,31 @@ test:
 	else \
 		printf "\\nSUCCESS\\n"; \
 	fi
+
+.PHONY: _test-ready
+_test-ready:
+	@echo "Testing for login page to become ready"
+	@for in in $$(seq 60); do \
+		SUCCESS=0; \
+		printf "."; \
+		if ! curl -sS http://localhost:8000/login.php | grep -E 'Unable to connect|Cannot modify header|Undefined variable|Warning:|Notice:' >/dev/null; then \
+			SUCCESS=1; \
+		fi; \
+		if curl -sS http://localhost:8000/login.php | grep -E 'Damn Vulnerable Web Application' >/dev/null; then \
+			SUCCESS=$$(( SUCCESS + 1 )); \
+		fi; \
+		if [ "$${SUCCESS}" = "2" ]; then \
+			break; \
+		fi; \
+		sleep 1; \
+	done; \
+	if [ "$${SUCCESS}" != "2" ]; then \
+		printf "\\nFAILED\\n"; \
+		exit 1; \
+	else \
+		printf "\\nSUCCESS\\n"; \
+	fi
+
 
 .PHONY: tag
 tag:
