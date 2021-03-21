@@ -12,6 +12,10 @@
 **[License](#page_facing_up-license)**
 
 [![Linux](https://github.com/cytopia/docker-dvwa/actions/workflows/build.yml/badge.svg)](https://github.com/cytopia/docker-dvwa/actions/workflows/build.yml)
+[![Linux](https://github.com/cytopia/docker-dvwa/actions/workflows/nightly.yml/badge.svg)](https://github.com/cytopia/docker-dvwa/actions/workflows/nightly.yml)
+[![](https://img.shields.io/docker/pulls/cytopia/dvwa.svg)](https://hub.docker.com/r/cytopia/dvwa)
+[![](https://img.shields.io/badge/github-cytopia%2Fdocker--dvwa-red.svg)](https://github.com/cytopia/docker-dvwa "github.com/cytopia/docker-dvwa")
+[![License](https://img.shields.io/badge/license-MIT-%233DA639.svg)](https://opensource.org/licenses/MIT)
 
 
 DVWA has an official Docker image available at [Dockerhub](https://hub.docker.com/r/vulnerables/web-dvwa/), however by the time of writing this image did not receive any updates for 2 years.
@@ -20,6 +24,8 @@ If you need an always up-to-date version, use the here provided Docker Compose s
 
 Additionally this Docker image comes with **CTF challenges** that require you to completely compromise the machine and reach root access. [Read here](#pirate_flag-capture-the-flag) for details.
 
+
+[![Docker hub](http://dockeri.co/image/cytopia/dvwa?kill_cache=1)](https://hub.docker.com/r/cytopia/dvwa)
 
 
 ## :tada: Install
