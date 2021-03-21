@@ -1,0 +1,8 @@
+listen_port = "8080"
+php_version = "7.2"
+
+instance_type = "t3.medium"
+
+tags = {
+  Name = "DVWA"
+}

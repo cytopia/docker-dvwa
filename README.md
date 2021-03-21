@@ -256,6 +256,25 @@ make rebuild PHP=8.0
 
 
 
+## :rocket: Deployment
+
+### AWS
+
+This repository ships a Terraform module to deploy DVWA on AWS.
+
+```bash
+cd aws/
+cp terraform.tfvars-example terraform.tfvars
+
+terraform init
+terraform apply
+```
+
+For more information see [Terraform module](aws/).
+
+
+
+
 ## :lock: [cytopia](https://github.com/cytopia) sec tools
 
 Below is a list of sec tools and docs I am maintaining, which might come in handy working on DVWA.
