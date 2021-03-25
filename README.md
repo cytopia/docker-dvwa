@@ -125,6 +125,7 @@ The DVWA Docker image contains the following tools assisting you in solving the 
 * `ping`
 * `sudo`
 * `telnet`
+* `python3`
 
 
 

@@ -42,6 +42,7 @@ RUN set -eux \
 		iputils-ping \
 		ltrace \
 		netcat \
+		python3 \
 		strace \
 		sudo \
 		telnet \
