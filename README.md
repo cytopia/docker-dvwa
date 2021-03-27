@@ -31,6 +31,9 @@ Additionally this Docker image comes with **CTF challenges** that require you to
 
 [![Docker hub](http://dockeri.co/image/cytopia/dvwa?kill_cache=1)](https://hub.docker.com/r/cytopia/dvwa)
 
+> **Docker images:** `php-5.5` | `php-5.6` | `php-7.0` | `php-7.1` | `php-7.2` | `php-7.3` | `php-7.4` | `php-8.0`
+
+
 
 ## :tada: Install
 Clone repository from GitHub:
