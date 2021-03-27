@@ -278,6 +278,8 @@ For more information see [Terraform module](aws/).
 
 ### Kubernetes
 
+[![Kubernetes](https://github.com/cytopia/docker-dvwa/actions/workflows/kubernetes.yml/badge.svg)](https://github.com/cytopia/docker-dvwa/actions/workflows/kubernetes.yml)
+
 This repository ships Kubernetes deployments to run DVWA on K8s or minikube.
 
 ```bash
