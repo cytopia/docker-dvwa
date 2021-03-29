@@ -1,4 +1,4 @@
-# Dockerized [DVWA](https://github.com/digininja/DVWA)
+# Dockerized DVWA
 
 **[Install](#tada-install)** |
 **[Start](#zap-start)** |
@@ -22,11 +22,11 @@
 >
 > https://github.com/digininja/DVWA
 
-DVWA has an official Docker image available at [Dockerhub](https://hub.docker.com/r/vulnerables/web-dvwa/), however by the time of writing this image did not receive any updates for 2 years.
+[DVWA](https://github.com/digininja/DVWA) has an official Docker image available at [Dockerhub](https://hub.docker.com/r/vulnerables/web-dvwa/), however by the time of writing this image did not receive any recent updates.
 
-If you need an always up-to-date version, use the here provided Docker Compose setup. The image is built every night against the latest master branch of the [DVWA](https://github.com/digininja/DVWA) repository and can also be built locally.
+If you need an always up-to-date version, you can use the here provided Docker Compose setup. The image is built every night against the latest master branch of the [DVWA](https://github.com/digininja/DVWA) and pushed to [Dockehub](https://hub.docker.com/r/cytopia/dvwa).
 
-Additionally this Docker image comes with **CTF challenges** that require you to completely compromise the machine and reach root access. [Read here](#pirate_flag-capture-the-flag) for details.
+Additionally this Docker image comes with a few **CTF challenges** that require you to completely compromise the machine and reach root access. [Read here](#pirate_flag-capture-the-flag) for details.
 
 
 [![Docker hub](http://dockeri.co/image/cytopia/dvwa?kill_cache=1)](https://hub.docker.com/r/cytopia/dvwa)
@@ -266,7 +266,7 @@ make rebuild PHP=8.0
 
 [![Terraform](https://github.com/cytopia/docker-dvwa/actions/workflows/terraform.yml/badge.svg)](https://github.com/cytopia/docker-dvwa/actions/workflows/terraform.yml)
 
-This repository ships a Terraform module to deploy DVWA on AWS.
+This repository ships a [Terraform module](aws/) to deploy DVWA on AWS.
 
 ```bash
 cd aws/
@@ -283,7 +283,7 @@ For more information see [Terraform module](aws/).
 
 [![Kubernetes](https://github.com/cytopia/docker-dvwa/actions/workflows/kubernetes.yml/badge.svg)](https://github.com/cytopia/docker-dvwa/actions/workflows/kubernetes.yml)
 
-This repository ships Kubernetes deployments to run DVWA on K8s or minikube.
+This repository ships [Kubernetes resources](k8s/) to deploy DVWA on K8s or minikube.
 
 ```bash
 cd k8s/
