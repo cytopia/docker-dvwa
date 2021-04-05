@@ -117,6 +117,8 @@ Additionally to the default DVWA features, this flavour also contains a few flag
 * :heavy_check_mark: You must gain access to the running Docker container through the web application.
 * **:no_entry: You cannot use `docker exec -it dvwa_web bash` to gain access**
 
+Let me know on :bird: [Twitter](https://twitter.com/everythingcli) if you've solved them and how easy/difficult they were.
+
 
 
 ## :gear: Tools
