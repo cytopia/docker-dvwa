@@ -6,6 +6,8 @@ RUN set -eux \
 	&& apt-get update \
 	&& apt-get install -y \
 		git \
+		ca-certificates \
+	&& update-ca-certificates \
 	&& git clone https://github.com/digininja/DVWA /DVWA \
 	&& rm -rf /DVWA/.git \
 	&& rm -rf /DVWA/.github \
@@ -29,6 +31,8 @@ RUN set -eux \
 	&& apt-get update \
 	&& apt-get install -y \
 		libpng-dev \
+		ca-certificates \
+	&& update-ca-certificates \
 	&& docker-php-ext-install gd \
 	&& docker-php-ext-install mysqli \
 	&& docker-php-ext-install pdo_mysql \
