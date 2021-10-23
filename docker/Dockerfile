@@ -6,6 +6,8 @@ RUN set -eux \
 	&& apt-get update \
 	&& apt-get install -y \
 		git \
+		ca-certificates \
+	&& update-ca-certificates \
 	&& git clone https://github.com/digininja/DVWA /DVWA \
 	&& rm -rf /DVWA/.git \
 	&& rm -rf /DVWA/.github \
@@ -15,10 +17,10 @@ RUN set -eux \
 # Get Adminer
 RUN set -eux \
 	&& URL="$( \
-		curl -sS --fail https://www.adminer.org/ \
+		curl -sS --fail -k https://www.adminer.org/ \
 		| grep -Eo 'https://github.com/vrana/adminer/releases/download/v[.0-9]+/adminer-[.0-9]+-mysql-en.php' \
 	)" \
-	&& curl -sS --fail -L "${URL}" > /adminer.php
+	&& curl -sS --fail -k -L "${URL}" > /adminer.php
 
 
 ARG PHP_VERSION
@@ -29,6 +31,8 @@ RUN set -eux \
 	&& apt-get update \
 	&& apt-get install -y \
 		libpng-dev \
+		ca-certificates \
+	&& update-ca-certificates \
 	&& docker-php-ext-install gd \
 	&& docker-php-ext-install mysqli \
 	&& docker-php-ext-install pdo_mysql \
