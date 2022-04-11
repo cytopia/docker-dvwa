@@ -102,6 +102,13 @@ fi
 	echo "\$_DVWA[ 'default_security_level' ] = '${DEF_SECURITY_LEVEL}';";
 	echo "\$_DVWA[ 'default_phpids_level' ] = '${DEF_PHPIDS_ENABLED}';";
 	echo "\$_DVWA[ 'default_phpids_verbose' ] = '${DEF_PHPIDS_VERBOSE}';";
+
+	echo "define (\"MYSQL\", \"mysql\");";
+	echo "define (\"SQLITE\", \"sqlite\");";
+	# TODO: make this configurable via docker env vars
+	echo "\$_DVWA[\"SQLI_DB\"]    = MYSQL;";
+	echo "#\$_DVWA[\"SQLI_DB\"]   = SQLITE;";
+	echo "#\$_DVWA[\"SQLITE_DB\"] = \"sqli.db\";";
 	echo "?>";
 } >> /var/www/html/config/config.inc.php
 

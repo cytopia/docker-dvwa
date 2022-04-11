@@ -14,6 +14,11 @@ RUN set -eux \
 	&& rm -rf /DVWA/.gitignore \
 	&& rm -rf /DVWA/php.ini
 
+# Disable SQLITE
+RUN set -eux \
+	&& sed -i'' "s/if (\$_DVWA\['SQLI_DB'\]/if ('no'/g" /DVWA/dvwa/includes/dvwaPage.inc.php \
+	&& sed -i'' 's/[[:space:]]SQLITE)/"SQLITE")/g' /DVWA/dvwa/includes/dvwaPage.inc.php
+
 # Get Adminer
 RUN set -eux \
 	&& URL="$( \
