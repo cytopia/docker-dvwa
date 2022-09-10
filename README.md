@@ -326,3 +326,8 @@ Below is a list of sec tools and docs I am maintaining, which might come in hand
 **[MIT License](LICENSE.md)**
 
 Copyright (c) 2021 **[cytopia](https://github.com/cytopia)**
+
+
+### Infrastructure model
+
+![Infrastructure model](.infragenie/infrastructure_model.png)
