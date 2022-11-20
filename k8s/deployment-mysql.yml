@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: mariadb:10.4
+          image: mariadb:10.1
           ports:
             - containerPort: 3306
           volumeMounts:

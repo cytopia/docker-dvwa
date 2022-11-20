@@ -279,7 +279,10 @@ To build or rebuild the Docker image against new updates in <a href="https://git
 make rebuild
 
 # This is building the image with PHP 8.0
-make rebuild PHP=8.0
+make rebuild VERSION=8.0
+
+# Rebuild PHP 8.1 for arm64 platform
+make rebuild VERSION=8.0 ARCH=linux/arm64
 ```
 </p>
 </details>

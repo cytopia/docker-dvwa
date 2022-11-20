@@ -192,6 +192,7 @@ _test-available:
 		sleep 1; \
 	done; \
 	if [ "$${SUCCESS}" != "1" ]; then \
+		cd tests && docker-compose logs; \
 		printf "\\nFAILED\\n"; \
 		exit 1; \
 	else \
@@ -220,6 +221,7 @@ _test-ready:
 		sleep 1; \
 	done; \
 	if [ "$${SUCCESS}" != "2" ]; then \
+		cd tests && docker-compose logs; \
 		printf "\\nFAILED\\n"; \
 		exit 1; \
 	else \

@@ -23,7 +23,7 @@ services:
       - MYSQL_PASSWORD=p@ssw0rd
 
   dvwa_db:
-    image: mysql:5.6
+    image: mariadb:10.1
     hostname: dvwa_db
     volumes:
       - dvwa_db_data:/var/lib/mysql
