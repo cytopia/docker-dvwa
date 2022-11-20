@@ -1,13 +1,16 @@
 ARG VERSION
 FROM php:${VERSION}-apache as builder
 
-# Get DVWA
+# Install requirements
 RUN set -eux \
 	&& apt-get update \
-	&& apt-get install -y \
+	&& apt-get install -y --no-install-recommends --no-install-suggests \
 		git \
 		ca-certificates \
-	&& update-ca-certificates \
+	&& update-ca-certificates
+
+# Get DVWA
+RUN set -eux \
 	&& git clone https://github.com/digininja/DVWA /DVWA \
 	&& rm -rf /DVWA/.git \
 	&& rm -rf /DVWA/.github \
@@ -34,7 +37,7 @@ FROM php:${VERSION}-apache
 # Satisfy PHP requirements
 RUN set -eux \
 	&& apt-get update \
-	&& apt-get install -y \
+	&& apt-get install -y --no-install-recommends --no-install-suggests \
 		libpng-dev \
 		ca-certificates \
 	&& update-ca-certificates \
@@ -47,9 +50,8 @@ RUN set -eux \
 # Satisfy Application requirements
 RUN set -eux \
 	&& apt-get update \
-	&& apt-get install -y \
+	&& apt-get install -y --no-install-recommends --no-install-suggests \
 		iputils-ping \
-		ltrace \
 		netcat \
 		python3 \
 		strace \
