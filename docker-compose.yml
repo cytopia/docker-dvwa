@@ -1,10 +1,10 @@
 ---
-version: '2.3'
+version: '2.4'
 
 services:
 
   dvwa_web:
-    image: cytopia/dvwa:php-${PHP_VERSION:-7.2}
+    image: cytopia/dvwa:php-${PHP_VERSION:-8.1}
     restart: unless-stopped
     ports:
       - "${LISTEN_PORT:-8000}:80"

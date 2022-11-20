@@ -18,7 +18,7 @@ terraform apply
 |------|-------------|:----:|:-----:|:-----:|
 | instance\_type | AWS EC2 instance type to use for DVWA server | string | `"t3.nano"` | no |
 | listen\_port | Port for DVWA web interface | string | `"8080"` | no |
-| php\_version | PHP version to run DVWA | string | `"7.2"` | no |
+| php\_version | PHP version to run DVWA | string | `"8.1"` | no |
 | public\_key | SSH public key to add | string | `""` | no |
 | tags | Tags to add to all resources | map | `{ "Name": "dvwa" }` | no |
 | vpc\_cidr | VPC CIDR | string | `"10.0.0.0/16"` | no |

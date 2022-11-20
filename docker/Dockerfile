@@ -1,13 +1,16 @@
-ARG PHP_VERSION
-FROM php:${PHP_VERSION}-apache as builder
+ARG VERSION
+FROM php:${VERSION}-apache as builder
+
+# Install requirements
+RUN set -eux \
+	&& apt-get update \
+	&& apt-get install -y --no-install-recommends --no-install-suggests \
+		git \
+		ca-certificates \
+	&& update-ca-certificates
 
 # Get DVWA
 RUN set -eux \
-	&& apt-get update \
-	&& apt-get install -y \
-		git \
-		ca-certificates \
-	&& update-ca-certificates \
 	&& git clone https://github.com/digininja/DVWA /DVWA \
 	&& rm -rf /DVWA/.git \
 	&& rm -rf /DVWA/.github \
@@ -28,13 +31,13 @@ RUN set -eux \
 	&& curl -sS --fail -k -L "${URL}" > /adminer.php
 
 
-ARG PHP_VERSION
-FROM php:${PHP_VERSION}-apache
+ARG VERSION
+FROM php:${VERSION}-apache
 
 # Satisfy PHP requirements
 RUN set -eux \
 	&& apt-get update \
-	&& apt-get install -y \
+	&& apt-get install -y --no-install-recommends --no-install-suggests \
 		libpng-dev \
 		ca-certificates \
 	&& update-ca-certificates \
@@ -47,9 +50,8 @@ RUN set -eux \
 # Satisfy Application requirements
 RUN set -eux \
 	&& apt-get update \
-	&& apt-get install -y \
+	&& apt-get install -y --no-install-recommends --no-install-suggests \
 		iputils-ping \
-		ltrace \
 		netcat \
 		python3 \
 		strace \

@@ -1,0 +1,80 @@
+---
+
+# -------------------------------------------------------------------------------------------------
+# Job Name
+# -------------------------------------------------------------------------------------------------
+name: params
+
+
+# -------------------------------------------------------------------------------------------------
+# Custom Variables
+# -------------------------------------------------------------------------------------------------
+env:
+  MATRIX: >-
+    [
+      {
+        "NAME":    "dvwa",
+        "VERSION": [
+          "latest",
+          "8.1",
+          "8.0",
+          "7.4",
+          "7.3",
+          "7.2",
+          "7.1",
+          "7.0",
+          "5.6"
+        ],
+        "FLAVOUR": ["latest"],
+        "ARCH":    ["linux/amd64", "linux/arm64"]
+      }
+    ]
+
+
+# -------------------------------------------------------------------------------------------------
+# When to run
+# -------------------------------------------------------------------------------------------------
+on:
+  workflow_call:
+    outputs:
+      matrix:
+        description: "The determined version matrix"
+        value: ${{ jobs.params.outputs.matrix }}
+      refs:
+        description: "The determined git ref matrix (only during scheduled run)"
+        value: ${{ jobs.params.outputs.refs }}
+
+jobs:
+  params:
+    runs-on: ubuntu-latest
+
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      refs: ${{ steps.set-refs.outputs.matrix }}
+
+    steps:
+      - name: "[Set-Output] Matrix"
+        id: set-matrix
+        run: |
+          echo "matrix=$( echo '${{ env.MATRIX }}' | jq -M -c )" >> $GITHUB_OUTPUT
+
+      - name: "[Set-Output] Matrix 'Refs' (master branch and latest tag)"
+        id: set-refs
+        uses: cytopia/git-ref-matrix-action@v0.1.12
+        with:
+          repository_default_branch: master
+          branches: master
+          num_latest_tags: 0
+        if: github.event_name == 'schedule'
+
+      - name: "[DEBUG] Show settings'"
+        run: |
+          echo 'Matrix'
+          echo '--------------------'
+          echo '${{ steps.set-matrix.outputs.matrix }}'
+          echo
+
+          echo 'Matrix: Refs'
+          echo '--------------------'
+          echo '${{ steps.set-matrix-refs.outputs.matrix }}'
+          echo
