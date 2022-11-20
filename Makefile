@@ -21,35 +21,36 @@ include $(MAKEFILES)
 # Default configuration
 # -------------------------------------------------------------------------------------------------
 TAG        = latest
-PHP        = latest
 PHP_LATEST = 8.1
 
 NAME       = dvwa
 IMAGE      = cytopia/dvwa
+VERSION    = latest
 DIR        = docker
 FILE       = Dockerfile
 
 
 # Building from master branch: Tag == 'latest'
 ifeq ($(strip $(TAG)),latest)
-	ifeq ($(strip $(PHP)),latest)
-		VERSION    = $(PHP_LATEST)
+	ifeq ($(strip $(VERSION)),latest)
+		PHP        = $(PHP_LATEST)
 		DOCKER_TAG = latest
 	else
-		VERSION    = $(PHP)
-		DOCKER_TAG = php-$(PHP)
+		PHP        = $(VERSION)
+		DOCKER_TAG = php-$(VERSION)
 	endif
 # Building from any other branch or tag: Tag == '<REF>'
 else
-	ifeq ($(strip $(PHP)),latest)
-		VERSION    = $(PHP_LATEST)
+	ifeq ($(strip $(VERSION)),latest)
+		PHP        = $(PHP_LATEST)
 		DOCKER_TAG = latest-$(TAG)
 	else
-		VERSION    = $(PHP)
-		DOCKER_TAG = php-$(PHP)-$(TAG)
+		PHP        = $(VERSION)
+		DOCKER_TAG = php-$(VERSION)-$(TAG)
 	endif
 endif
 
+DOCKER_PULL_VARIABLES = "VERSION=$(PHP)"
 
 # --------------------------------------------------------------------------------------------------
 # Default Target
@@ -114,11 +115,11 @@ _update_db:
 #  Docker Targets
 # -------------------------------------------------------------------------------------------------
 .PHONY: build
-build: ARGS+=--build-arg VERSION=$(VERSION)
+build: ARGS+=--build-arg VERSION=$(PHP)
 build: docker-arch-build
 
 .PHONY: rebuild
-rebuild: ARGS+=--build-arg VERSION=$(VERSION)
+rebuild: ARGS+=--build-arg VERSION=$(PHP)
 rebuild: docker-arch-rebuild
 
 .PHONY: push
