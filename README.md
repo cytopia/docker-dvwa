@@ -12,6 +12,7 @@
 **[Sec Tools](#lock-cytopia-sec-tools)** |
 **[License](#page_facing_up-license)**
 
+[![Tag](https://img.shields.io/github/tag/cytopia/docker-dvwa.svg)](https://github.com/cytopia/docker-dvwa/releases)
 [![Build](https://github.com/cytopia/docker-dvwa/actions/workflows/build.yml/badge.svg)](https://github.com/cytopia/docker-dvwa/actions/workflows/build.yml)
 [![Nightly](https://github.com/cytopia/docker-dvwa/actions/workflows/nightly.yml/badge.svg)](https://github.com/cytopia/docker-dvwa/actions/workflows/nightly.yml)
 [![](https://img.shields.io/docker/pulls/cytopia/dvwa.svg)](https://hub.docker.com/r/cytopia/dvwa)
@@ -24,15 +25,38 @@
 
 [DVWA](https://github.com/digininja/DVWA) has an official Docker image available at [Dockerhub](https://hub.docker.com/r/vulnerables/web-dvwa/), however by the time of writing this image did not receive any recent updates.
 
-If you need an always up-to-date version, you can use the here provided Docker Compose setup. The image is built every night against the latest master branch of the [DVWA](https://github.com/digininja/DVWA) and pushed to [Dockehub](https://hub.docker.com/r/cytopia/dvwa).
+If you need an always up-to-date version or **`arm64`** images, you can use the here provided Docker Compose setup. The image is built every night against the latest master branch of the [DVWA](https://github.com/digininja/DVWA) and pushed to [Dockehub](https://hub.docker.com/r/cytopia/dvwa).
 
 Additionally this Docker image comes with a few **CTF challenges** that require you to completely compromise the machine and reach root access. [Read here](#pirate_flag-capture-the-flag) for details.
 
 
-[![Docker hub](http://dockeri.co/image/cytopia/dvwa?kill_cache=1)](https://hub.docker.com/r/cytopia/dvwa)
+**Available Architectures:**  `amd64`, `arm64`
 
-> **Docker images:** `php-5.6` | `php-7.0` | `php-7.1` | `php-7.2` | `php-7.3` | `php-7.4` | `php-8.0` | `php-8.1`
 
+
+## :whale: Available Docker image versions
+
+[![](https://img.shields.io/docker/pulls/cytopia/dvwa.svg)](https://hub.docker.com/r/cytopia/dvwa)
+[![Docker](https://badgen.net/badge/icon/:latest?icon=docker&label=cytopia/dvwa)](https://hub.docker.com/r/cytopia/dvwa)
+
+#### Rolling releaess
+
+The following Docker image tags are rolling releases and are built and updated every night.
+
+[![nightly](https://github.com/cytopia/docker-dvwa/workflows/nightly/badge.svg)](https://github.com/cytopia/docker-dvwa/actions?query=workflow%3Anightly)
+
+
+| Docker Tag            | Git Ref      | PHP         | Available Architectures                      |
+|-----------------------|--------------|-------------|----------------------------------------------|
+| **`latest`**          | master       | latest      | `amd64`, `arm64` |
+| `php-8.1`             | master       | **`8.1`**   | `amd64`, `arm64` |
+| `php-8.0`             | master       | **`8.0`**   | `amd64`, `arm64` |
+| `php-7.4`             | master       | **`7.4`**   | `amd64`, `arm64` |
+| `php-7.3`             | master       | **`7.3`**   | `amd64`, `arm64` |
+| `php-7.2`             | master       | **`7.2`**   | `amd64`, `arm64` |
+| `php-7.1`             | master       | **`7.1`**   | `amd64`, `arm64` |
+| `php-7.0`             | master       | **`7.0`**   | `amd64`, `arm64` |
+| `php-5.6`             | master       | **`5.6`**   | `amd64`, `arm64` |
 
 
 ## :tada: Install
