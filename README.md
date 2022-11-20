@@ -13,8 +13,8 @@
 **[License](#page_facing_up-license)**
 
 [![Tag](https://img.shields.io/github/tag/cytopia/docker-dvwa.svg)](https://github.com/cytopia/docker-dvwa/releases)
-[![Build](https://github.com/cytopia/docker-dvwa/actions/workflows/build.yml/badge.svg)](https://github.com/cytopia/docker-dvwa/actions/workflows/build.yml)
-[![Nightly](https://github.com/cytopia/docker-dvwa/actions/workflows/nightly.yml/badge.svg)](https://github.com/cytopia/docker-dvwa/actions/workflows/nightly.yml)
+[![build](https://github.com/cytopia/docker-dvwa/workflows/build/badge.svg)](https://github.com/cytopia/docker-dvwa/actions?query=workflow%3Abuild)
+[![nightly](https://github.com/cytopia/docker-dvwa/workflows/nightly/badge.svg)](https://github.com/cytopia/docker-dvwa/actions?query=workflow%3Anightly)
 [![](https://img.shields.io/docker/pulls/cytopia/dvwa.svg)](https://hub.docker.com/r/cytopia/dvwa)
 [![](https://img.shields.io/badge/github-cytopia%2Fdocker--dvwa-red.svg)](https://github.com/cytopia/docker-dvwa "github.com/cytopia/docker-dvwa")
 [![License](https://img.shields.io/badge/license-MIT-%233DA639.svg)](https://opensource.org/licenses/MIT)
