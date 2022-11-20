@@ -1,5 +1,5 @@
-ARG PHP_VERSION
-FROM php:${PHP_VERSION}-apache as builder
+ARG VERSION
+FROM php:${VERSION}-apache as builder
 
 # Get DVWA
 RUN set -eux \
@@ -28,8 +28,8 @@ RUN set -eux \
 	&& curl -sS --fail -k -L "${URL}" > /adminer.php
 
 
-ARG PHP_VERSION
-FROM php:${PHP_VERSION}-apache
+ARG VERSION
+FROM php:${VERSION}-apache
 
 # Satisfy PHP requirements
 RUN set -eux \

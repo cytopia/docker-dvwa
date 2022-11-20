@@ -72,7 +72,7 @@ fi
 ###
 ### Print settings
 ###
->&2 printf "Setting PHP version:        %s\\n" "$(php -v | head -1)"
+>&2 printf "Setting PHP version:        %s\\n" "$(php -v | grep ^PHP | head -1)"
 
 >&2 printf "Setting MySQL hostname:     %s\\n" "${MYSQL_HOSTNAME}"
 >&2 printf "Setting MySQL database:     %s\\n" "${MYSQL_DATABASE}"

@@ -31,7 +31,7 @@ Additionally this Docker image comes with a few **CTF challenges** that require 
 
 [![Docker hub](http://dockeri.co/image/cytopia/dvwa?kill_cache=1)](https://hub.docker.com/r/cytopia/dvwa)
 
-> **Docker images:** `php-5.5` | `php-5.6` | `php-7.0` | `php-7.1` | `php-7.2` | `php-7.3` | `php-7.4` | `php-8.0`
+> **Docker images:** `php-5.6` | `php-7.0` | `php-7.1` | `php-7.2` | `php-7.3` | `php-7.4` | `php-8.0` | `php-8.1`
 
 
 
@@ -85,7 +85,7 @@ This setup allows you to configure a few settings via the `.env` file.
 
 | Variable             | Default | Settings |
 |----------------------|---------|----------|
-| `PHP_VERSION`        | `7.2`   | PHP version to run DVWA (`5.5`, `5.6`, `7.0`, `7.1`, `7.2`, `7.3`, `7.4` or `8.0`) |
+| `PHP_VERSION`        | `8.1`   | PHP version to run DVWA (`5.6`, `7.0`, `7.1`, `7.2`, `7.3`, `7.4`, `8.0` or `8.1`) |
 | `LISTEN_PORT`        | `8000`  | Local port for the web server to listen on |
 | `RECAPTCHA_PRIV_KEY` |         | Required to make the captcha module work. (See [FAQ](#bulb-faq) section below) |
 | `RECAPTCHA_PUB_KEY`  |         | Required to make the captcha module work. (See [FAQ](#bulb-faq) section below) |
@@ -160,14 +160,14 @@ The here provided Docker images are built against all common PHP versions and yo
 # PHP VERSION
 # -----------
 # Uncomment one of the PHP versions you want to use for DVWA
-#PHP_VERSION=5.5
 #PHP_VERSION=5.6
 #PHP_VERSION=7.0
 #PHP_VERSION=7.1
-PHP_VERSION=7.2
+#PHP_VERSION=7.2
 #PHP_VERSION=7.3
 #PHP_VERSION=7.4
 #PHP_VERSION=8.0
+PHP_VERSION=8.1
 ```
 </p>
 </details>

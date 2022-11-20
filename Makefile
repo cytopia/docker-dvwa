@@ -2,21 +2,59 @@ ifneq (,)
 .error This Makefile requires GNU Make.
 endif
 
-.PHONY: help start stop logs reset enter update
+# Ensure additional Makefiles are present
+MAKEFILES = Makefile.docker Makefile.lint
+$(MAKEFILES): URL=https://raw.githubusercontent.com/devilbox/makefiles/master/$(@)
+$(MAKEFILES):
+	@if ! (curl --fail -sS -o $(@) $(URL) || wget -O $(@) $(URL)); then \
+		echo "Error, curl or wget required."; \
+		echo "Exiting."; \
+		false; \
+	fi
+include $(MAKEFILES)
+
+# Set default Target
+.DEFAULT_GOAL := help
 
 
-# --------------------------------------------------------------------------------------------------
-# Variables
-# --------------------------------------------------------------------------------------------------
-DIR = docker
-IMAGE = cytopia/dvwa
-TAG = latest
-PHP = 7.2
-NO_CACHE =
+# -------------------------------------------------------------------------------------------------
+# Default configuration
+# -------------------------------------------------------------------------------------------------
+TAG        = latest
+PHP        = latest
+PHP_LATEST = 8.1
+
+NAME       = dvwa
+IMAGE      = cytopia/dvwa
+DIR        = docker
+FILE       = Dockerfile
+
+
+# Building from master branch: Tag == 'latest'
+ifeq ($(strip $(TAG)),latest)
+	ifeq ($(strip $(PHP)),latest)
+		VERSION    = $(PHP_LATEST)
+		DOCKER_TAG = latest
+	else
+		VERSION    = $(PHP)
+		DOCKER_TAG = php-$(PHP)
+	endif
+# Building from any other branch or tag: Tag == '<REF>'
+else
+	ifeq ($(strip $(PHP)),latest)
+		VERSION    = $(PHP_LATEST)
+		DOCKER_TAG = latest-$(TAG)
+	else
+		VERSION    = $(PHP)
+		DOCKER_TAG = php-$(PHP)-$(TAG)
+	endif
+endif
+
 
 # --------------------------------------------------------------------------------------------------
 # Default Target
 # --------------------------------------------------------------------------------------------------
+.PHONY: help
 help:
 	@echo "start       Start docker-compose"
 	@echo "stop        Stop docker-compose"
@@ -28,18 +66,22 @@ help:
 # --------------------------------------------------------------------------------------------------
 # User Targets
 # --------------------------------------------------------------------------------------------------
+.PHONY: start
 start: .env
 	@echo "Starting DVWA"
 	docker-compose up -d
 	docker-compose logs dvwa_web 2>&1 | grep "Setting"
 
+.PHONY: stop
 stop:
 	@echo "Stopping DVWA"
 	docker-compose down
 
+.PHONY: logs
 logs:
 	docker-compose logs -f dvwa_web
 
+.PHONY: reset
 reset:
 	@echo "Resetting DVWA and removing MySQL volumes"
 	docker-compose kill 2> /dev/null || true
@@ -47,43 +89,98 @@ reset:
 	docker volume rm $(shell basename $(CURDIR))_dvwa_db_data 2> /dev/null || true
 	@echo "Reset complete"
 
+.PHONY: enter
 enter:
 	docker-compose exec -w /var/www/html dvwa_web bash
 
-
+.PHONY: update
 update: _update_web
 update: _update_db
 
+.PHONY: _update_web
 _update_web:
 	docker-compose pull dvwa_web
 
+.PHONY: _update_db
 _update_db:
 	docker-compose pull dvwa_db
 
-# Copy .env from .env-example if it does not exist
+# Copy .env from .env-example if it does not exist (NO .PHONY)
 .env:
 	cp .env-example .env
 
 
+# -------------------------------------------------------------------------------------------------
+#  Docker Targets
+# -------------------------------------------------------------------------------------------------
+.PHONY: build
+build: ARGS+=--build-arg VERSION=$(VERSION)
+build: docker-arch-build
 
-# --------------------------------------------------------------------------------------------------
-# CI Targets
-# --------------------------------------------------------------------------------------------------
+.PHONY: rebuild
+rebuild: ARGS+=--build-arg VERSION=$(VERSION)
+rebuild: docker-arch-rebuild
 
-build:
-	docker build $(NO_CACHE) --build-arg PHP_VERSION=$(PHP) -t $(IMAGE) -f $(DIR)/Dockerfile $(DIR)
-	$(MAKE) --no-print-directory tag TAG=php-$(PHP)
-
-rebuild: NO_CACHE=--no-cache
-rebuild: build
+.PHONY: push
+push: docker-arch-push
 
 
+# -------------------------------------------------------------------------------------------------
+#  Manifest Targets
+# -------------------------------------------------------------------------------------------------
+.PHONY: manifest-create
+manifest-create: docker-manifest-create
+
+.PHONY: manifest-push
+manifest-push: docker-manifest-push
+
+
+# -------------------------------------------------------------------------------------------------
+# Test Targets
+# -------------------------------------------------------------------------------------------------
+.PHONY: test
+test: _test-configure
+test: _test-start
 test: _test-available
 test: _test-ready
+test: _test-stop
+
+.PHONY: _test-configure
+_test-configure:
+	@echo "#---------------------------------------------------------------------------------#"
+	@echo "# [TESTING] Configure DVWA"
+	@echo "#---------------------------------------------------------------------------------#"
+	mkdir -p tests/
+	cp -f .env-example tests/.env
+	cp -f docker-compose.yml tests/
+	sed -i'' "s|image: cytopia.*|image: $(IMAGE):$(DOCKER_TAG)|g" tests/docker-compose.yml
+	echo "PHP_VERSION=${VERSION}" >> tests/.env
+	@echo
+
+.PHONY: _test-start
+_test-start:
+	@echo "#---------------------------------------------------------------------------------#"
+	@echo "# [TESTING] Start DVWA"
+	@echo "#---------------------------------------------------------------------------------#"
+	cd tests && docker-compose up -d
+	cd tests && docker-compose logs dvwa_web 2>&1 | grep "Setting"
+	@echo
+
+.PHONY: _test-stop
+_test-stop:
+	@echo "#---------------------------------------------------------------------------------#"
+	@echo "# Stop DVWA"
+	@echo "#---------------------------------------------------------------------------------#"
+	cd tests && docker-compose down
+	cd tests && docker-compose rm -f
+	@echo
 
 .PHONY: _test-available
 _test-available:
-	@echo "Testing for login page to become available"
+	@echo "#---------------------------------------------------------------------------------#"
+	@echo "# [TESTING] Check login: avail"
+	@echo "#---------------------------------------------------------------------------------#"
+	@echo "Waiting for login page to become available"
 	@SUCCESS=0; \
 	for in in $$(seq 60); do \
 		printf "."; \
@@ -99,9 +196,13 @@ _test-available:
 	else \
 		printf "\\nSUCCESS\\n"; \
 	fi
+	@echo
 
 .PHONY: _test-ready
 _test-ready:
+	@echo "#---------------------------------------------------------------------------------#"
+	@echo "# [TESTING] Check login: ready"
+	@echo "#---------------------------------------------------------------------------------#"
 	@echo "Testing for login page to become ready"
 	@for in in $$(seq 60); do \
 		SUCCESS=0; \
@@ -123,16 +224,4 @@ _test-ready:
 	else \
 		printf "\\nSUCCESS\\n"; \
 	fi
-
-
-.PHONY: tag
-tag:
-	docker tag $(IMAGE) $(IMAGE):$(TAG)
-
-.PHONY: login
-login:
-	yes | docker login --username $(USER) --password $(PASS)
-
-.PHONY: push
-push:
-	docker push $(IMAGE):$(TAG)
+	@echo

@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: dvwa
-          image: cytopia/dvwa:php-7.2
+          image: cytopia/dvwa:php-8.1
           ports:
             - containerPort: 80
           env:

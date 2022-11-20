@@ -8,7 +8,7 @@ variable "listen_port" {
 
 variable "php_version" {
   description = "PHP version to run DVWA"
-  default     = "7.2"
+  default     = "8.1"
 }
 
 variable "public_key" {
