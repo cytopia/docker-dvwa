@@ -62,5 +62,5 @@ spec:
                   key: DVWA_DATABASE
       volumes:
         - name: dvwa-mysql-vol
-          persistentVolumeClaim:
-            claimName: dvwa-mysql-data-claim
+          hostPath:
+            path: "/var/lib/mysql"
